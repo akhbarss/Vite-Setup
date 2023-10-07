@@ -2,6 +2,7 @@ import {
   RouterProvider,
   createBrowserRouter,
   Link,
+  useNavigate
 } from "react-router-dom"
 import "./App.css"
 
@@ -62,12 +63,16 @@ const App = () => {
       },
       {
         path: "*",
-        Component: () => (
-          <div>
-            <h1>404 <br /> Not Found!</h1>
-            <button>Back to Dashboard</button>
-          </div>
-        )
+        Component: () => {
+          const navigate = useNavigate()
+
+          return (
+            <div>
+              <h1>404 <br /> Not Found!</h1>
+              <button onClick={() => navigate("/")} >Back to Dashboard</button>
+            </div>
+          )
+        }
       }
 
     ])} />
